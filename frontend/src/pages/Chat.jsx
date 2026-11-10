@@ -50,8 +50,8 @@ export default function Chat() {
   return (
     <div className="space-y-6 max-w-4xl mx-auto">
       <div>
-        <h1 className="text-2xl md:text-3xl font-bold">AI Chat</h1>
-        <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
+        <h1 className="font-display text-3xl md:text-4xl font-light tracking-[-0.02em]">AI Chat</h1>
+        <p className="text-sm text-slate-500 dark:text-giga-muted mt-1">
           Powered by Pollinations AI — free, no API key required.
         </p>
       </div>

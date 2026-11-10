@@ -26,7 +26,7 @@ export default function Button({
       {...rest}
     >
       {loading && (
-        <span className="h-4 w-4 rounded-full border-2 border-white/40 border-t-white animate-spin" />
+        <span className="h-4 w-4 rounded-full border-2 border-current border-t-transparent animate-spin" />
       )}
       {children}
     </button>

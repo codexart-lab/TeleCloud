@@ -1,22 +1,28 @@
+import Icon from '../common/Icon.jsx';
+
 export default function StatCard({ icon, label, value, accent = 'blue', hint }) {
   const accents = {
-    blue: 'from-blue-500 to-cyan-500',
-    purple: 'from-purple-500 to-fuchsia-500',
-    emerald: 'from-emerald-500 to-teal-500',
-    amber: 'from-amber-500 to-orange-500',
+    blue: 'bg-giga-blue/10 text-giga-blue',
+    purple: 'bg-giga-violet/10 text-giga-violet',
+    emerald: 'bg-giga-green/10 text-giga-green',
+    amber: 'bg-giga-orange/10 text-giga-orange',
   };
   return (
     <div className="card p-5">
-      <div className="flex items-center justify-between mb-3">
-        <div
-          className={`h-10 w-10 rounded-xl bg-gradient-to-br ${accents[accent]} grid place-items-center text-white text-lg`}
-        >
-          {icon}
-        </div>
+      <div
+        className={`mb-3 grid h-9 w-9 place-items-center rounded-full border border-slate-200 text-base dark:border-giga-border ${
+          accents[accent] || accents.blue
+        }`}
+      >
+        <Icon name={icon} />
       </div>
-      <div className="text-2xl font-bold text-slate-900 dark:text-white">{value}</div>
-      <div className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">{label}</div>
-      {hint && <div className="text-[10px] text-slate-400 mt-1">{hint}</div>}
+      <div className="font-display text-3xl font-light text-slate-900 dark:text-giga-ink">
+        {value}
+      </div>
+      <div className="mt-1 font-mono text-[0.625rem] uppercase tracking-[0.14em] text-slate-500 dark:text-giga-faint">
+        {label}
+      </div>
+      {hint && <div className="mt-1 text-[10px] text-slate-400 dark:text-giga-faint">{hint}</div>}
     </div>
   );
 }

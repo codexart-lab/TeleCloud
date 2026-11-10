@@ -6,6 +6,7 @@ import FileList from '../components/files/FileList.jsx';
 import FilePreview from '../components/files/FilePreview.jsx';
 import ShareModal from '../components/files/ShareModal.jsx';
 import { FILE_FILTERS } from '../utils/constants.js';
+import Icon from '../components/common/Icon.jsx';
 
 export default function Files() {
   const [files, setFiles] = useState([]);
@@ -62,8 +63,8 @@ export default function Files() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl md:text-3xl font-bold">Files</h1>
-        <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
+        <h1 className="font-display text-3xl md:text-4xl font-light tracking-[-0.02em]">Files</h1>
+        <p className="text-sm text-slate-500 dark:text-giga-muted mt-1">
           Upload and manage your Telegram-backed storage.
         </p>
       </div>
@@ -77,11 +78,11 @@ export default function Files() {
             onClick={() => setFilter(f.key)}
             className={`px-3 py-1.5 rounded-full text-xs border transition ${
               filter === f.key
-                ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white border-transparent'
-                : 'border-slate-300 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:border-blue-500/50'
+                ? 'bg-slate-900 text-white border-transparent dark:bg-giga-action dark:text-giga-action-ink'
+                : 'border-slate-300 dark:border-giga-border text-slate-600 dark:text-giga-soft hover:border-giga-violet/50'
             }`}
           >
-            {f.emoji} {f.label}
+            <Icon name={f.icon} className="mr-1 text-[1.1em]" /> {f.label}
           </button>
         ))}
         <div className="flex-1" />

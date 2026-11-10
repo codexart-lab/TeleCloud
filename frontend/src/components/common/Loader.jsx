@@ -3,9 +3,9 @@ export default function Loader({ label = 'Loading…', full = false, size = 'md'
   const content = (
     <div className="flex flex-col items-center gap-3">
       <div
-        className={`${s} rounded-full border-2 border-blue-500/30 border-t-blue-500 animate-spin`}
+        className={`${s} rounded-full border-2 border-giga-violet/30 border-t-giga-violet animate-spin`}
       />
-      {label && <p className="text-sm text-slate-500 dark:text-slate-400">{label}</p>}
+      {label && <p className="text-sm text-slate-500 dark:text-giga-muted">{label}</p>}
     </div>
   );
   if (full) return <div className="min-h-[50vh] grid place-items-center">{content}</div>;

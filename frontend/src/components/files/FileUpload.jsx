@@ -3,6 +3,7 @@ import { api } from '../../api/index.js';
 import { useToast } from '../../hooks/useToast.jsx';
 import { MAX_FILE_SIZE } from '../../utils/constants.js';
 import { formatBytes } from '../../utils/format.js';
+import Icon from '../common/Icon.jsx';
 
 export default function FileUpload({ folderId, onUploaded }) {
   const [dragging, setDragging] = useState(false);
@@ -59,7 +60,7 @@ export default function FileUpload({ folderId, onUploaded }) {
       onDrop={onDrop}
       onClick={() => !uploading && inputRef.current?.click()}
       className={`card-static cursor-pointer p-6 md:p-8 text-center transition-all ${
-        dragging ? 'border-blue-500 ring-2 ring-blue-500/40 -translate-y-0.5' : ''
+        dragging ? 'border-giga-violet ring-2 ring-giga-violet/30 -translate-y-0.5' : ''
       }`}
     >
       <input
@@ -69,17 +70,19 @@ export default function FileUpload({ folderId, onUploaded }) {
         className="hidden"
         onChange={(e) => handleFiles(e.target.files)}
       />
-      <div className="text-4xl mb-3">{uploading ? '⏳' : '📤'}</div>
-      <div className="font-medium text-slate-900 dark:text-white">
+      <div className="text-4xl mb-3">
+        <Icon name={uploading ? 'hourglass_top' : 'upload'} />
+      </div>
+      <div className="font-medium text-slate-900 dark:text-giga-ink">
         {uploading ? 'Uploading…' : 'Drop files here or click to upload'}
       </div>
-      <div className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+      <div className="text-xs text-slate-500 dark:text-giga-muted mt-1">
         Max {formatBytes(MAX_FILE_SIZE)} per file · Sent to your Telegram
       </div>
       {uploading && (
-        <div className="mt-4 h-1.5 rounded-full bg-slate-200 dark:bg-slate-800 overflow-hidden">
+        <div className="mt-4 h-1.5 rounded-full bg-slate-200 dark:bg-giga-panel overflow-hidden">
           <div
-            className="h-full bg-gradient-to-r from-blue-500 to-purple-600 transition-all"
+            className="h-full bg-gradient-to-r from-giga-violet to-giga-rose transition-all"
             style={{ width: `${progress}%` }}
           />
         </div>

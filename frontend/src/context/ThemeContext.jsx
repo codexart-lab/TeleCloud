@@ -21,7 +21,7 @@ export function ThemeProvider({ children }) {
       localStorage.setItem('tc_theme', theme);
     } catch {}
     const meta = document.querySelector('meta[name="theme-color"]');
-    if (meta) meta.setAttribute('content', theme === 'dark' ? '#060912' : '#eef2f9');
+    if (meta) meta.setAttribute('content', theme === 'dark' ? '#000000' : '#eef2f9');
   }, [theme]);
 
   const toggle = () => setTheme((t) => (t === 'dark' ? 'light' : 'dark'));

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Icon from '../common/Icon.jsx';
 
 export default function ChatInput({ onSend, disabled }) {
   const [value, setValue] = useState('');
@@ -27,7 +28,7 @@ export default function ChatInput({ onSend, disabled }) {
         className="btn-primary px-4 py-2.5"
         aria-label="Send"
       >
-        ➤
+        <Icon name="send" className="text-[1.1em]" />
       </button>
     </form>
   );

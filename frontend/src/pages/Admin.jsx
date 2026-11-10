@@ -6,6 +6,7 @@ import { useToast } from '../hooks/useToast.jsx';
 import Input from '../components/common/Input.jsx';
 import Button from '../components/common/Button.jsx';
 import Loader from '../components/common/Loader.jsx';
+import Icon from '../components/common/Icon.jsx';
 import { formatBytes, formatDate } from '../utils/format.js';
 
 export default function Admin() {
@@ -52,15 +53,15 @@ export default function Admin() {
   return (
     <div className="space-y-6 max-w-5xl">
       <div>
-        <h1 className="text-2xl md:text-3xl font-bold">Admin panel</h1>
-        <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
+        <h1 className="font-display text-3xl md:text-4xl font-light tracking-[-0.02em]">Admin panel</h1>
+        <p className="text-sm text-slate-500 dark:text-giga-muted mt-1">
           Configure the shared bot and inspect users.
         </p>
       </div>
 
       <div className="card-static p-6">
         <div className="font-semibold mb-3">Telegram Bot</div>
-        <div className="text-xs text-slate-500 dark:text-slate-400 mb-3">
+        <div className="text-xs text-slate-500 dark:text-giga-muted mb-3">
           Current: {botInfo?.ready ? `@${botInfo.bot_username}` : 'not configured'}
         </div>
         <div className="flex gap-2 flex-wrap">
@@ -72,7 +73,7 @@ export default function Admin() {
           />
           <Button loading={saving} onClick={saveToken}>Save token</Button>
         </div>
-        <p className="text-xs text-slate-500 dark:text-slate-400 mt-3">
+        <p className="text-xs text-slate-500 dark:text-giga-muted mt-3">
           Get a token from <a className="link" href="https://t.me/BotFather" target="_blank" rel="noreferrer">@BotFather</a>.
         </p>
       </div>
@@ -80,31 +81,31 @@ export default function Admin() {
       {totals && (
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
           <div className="card-static p-4">
-            <div className="text-xs text-slate-500 dark:text-slate-400">Users</div>
+            <div className="text-xs text-slate-500 dark:text-giga-muted">Users</div>
             <div className="text-xl font-bold">{totals.users}</div>
           </div>
           <div className="card-static p-4">
-            <div className="text-xs text-slate-500 dark:text-slate-400">Files</div>
+            <div className="text-xs text-slate-500 dark:text-giga-muted">Files</div>
             <div className="text-xl font-bold">{totals.files}</div>
           </div>
           <div className="card-static p-4">
-            <div className="text-xs text-slate-500 dark:text-slate-400">Storage</div>
+            <div className="text-xs text-slate-500 dark:text-giga-muted">Storage</div>
             <div className="text-xl font-bold">{formatBytes(totals.size)}</div>
           </div>
           <div className="card-static p-4">
-            <div className="text-xs text-slate-500 dark:text-slate-400">Shares</div>
+            <div className="text-xs text-slate-500 dark:text-giga-muted">Shares</div>
             <div className="text-xl font-bold">{totals.shares}</div>
           </div>
         </div>
       )}
 
       <div className="card-static overflow-hidden">
-        <div className="p-4 border-b border-slate-200 dark:border-slate-800 font-semibold">
+        <div className="p-4 border-b border-slate-200 dark:border-giga-border font-semibold">
           All users ({users.length})
         </div>
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
-            <thead className="bg-slate-100/60 dark:bg-slate-900/60 text-left">
+            <thead className="bg-slate-100/60 dark:bg-giga-surface text-left">
               <tr>
                 <th className="px-4 py-3 font-medium">#</th>
                 <th className="px-4 py-3 font-medium">Name</th>
@@ -115,21 +116,23 @@ export default function Admin() {
                 <th className="px-4 py-3 font-medium">Joined</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-200 dark:divide-slate-800">
+            <tbody className="divide-y divide-slate-200 dark:divide-giga-border">
               {users.map((u) => (
                 <tr key={u.id}>
-                  <td className="px-4 py-3 text-slate-500 dark:text-slate-400">{u.id}</td>
+                  <td className="px-4 py-3 text-slate-500 dark:text-giga-muted">{u.id}</td>
                   <td className="px-4 py-3">
                     {u.name} {u.is_admin ? <span className="badge bg-amber-500/20 text-amber-500 ml-1">admin</span> : null}
                   </td>
-                  <td className="px-4 py-3 text-slate-600 dark:text-slate-400">{u.email}</td>
-                  <td className="px-4 py-3 text-slate-600 dark:text-slate-400">
+                  <td className="px-4 py-3 text-slate-600 dark:text-giga-muted">{u.email}</td>
+                  <td className="px-4 py-3 text-slate-600 dark:text-giga-muted">
                     {u.tg_username ? `@${u.tg_username}` : '—'}
-                    {u.chat_id ? ' ✓' : ''}
+                    {u.chat_id ? (
+                      <Icon name="check" className="ml-1 text-[1em] text-emerald-500" />
+                    ) : null}
                   </td>
                   <td className="px-4 py-3">{u.file_count}</td>
                   <td className="px-4 py-3">{formatBytes(u.total_size)}</td>
-                  <td className="px-4 py-3 text-slate-600 dark:text-slate-400">{formatDate(u.created_at)}</td>
+                  <td className="px-4 py-3 text-slate-600 dark:text-giga-muted">{formatDate(u.created_at)}</td>
                 </tr>
               ))}
             </tbody>

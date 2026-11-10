@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import Icon from './Icon.jsx';
 
 export default function Modal({ open, onClose, title, children, size = 'md', footer }) {
   useEffect(() => {
@@ -33,10 +34,10 @@ export default function Modal({ open, onClose, title, children, size = 'md', foo
             <h3 className="text-lg font-semibold">{title}</h3>
             <button
               onClick={onClose}
-              className="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-xl leading-none"
+              className="text-slate-400 hover:text-slate-600 dark:hover:text-giga-ink text-xl leading-none"
               aria-label="Close"
             >
-              ✕
+              <Icon name="close" />
             </button>
           </div>
         )}

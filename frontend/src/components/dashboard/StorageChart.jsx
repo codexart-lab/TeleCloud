@@ -1,4 +1,5 @@
 import { formatBytes } from '../../utils/format.js';
+import Icon from '../common/Icon.jsx';
 
 export default function StorageChart({ byType = [] }) {
   const groups = { images: 0, videos: 0, audio: 0, docs: 0 };
@@ -11,10 +12,10 @@ export default function StorageChart({ byType = [] }) {
   }
   const total = Object.values(groups).reduce((a, b) => a + b, 0) || 1;
   const items = [
-    { key: 'images', label: 'Images', color: 'bg-blue-500', emoji: '🖼️' },
-    { key: 'videos', label: 'Videos', color: 'bg-purple-500', emoji: '🎬' },
-    { key: 'audio', label: 'Audio', color: 'bg-emerald-500', emoji: '🎵' },
-    { key: 'docs', label: 'Docs', color: 'bg-amber-500', emoji: '📄' },
+    { key: 'images', label: 'Images', color: 'bg-giga-blue', icon: 'image' },
+    { key: 'videos', label: 'Videos', color: 'bg-giga-violet', icon: 'movie' },
+    { key: 'audio', label: 'Audio', color: 'bg-giga-green', icon: 'music_note' },
+    { key: 'docs', label: 'Docs', color: 'bg-giga-orange', icon: 'description' },
   ];
 
   return (
@@ -22,14 +23,14 @@ export default function StorageChart({ byType = [] }) {
       <div className="flex items-center justify-between mb-4">
         <div>
           <div className="text-sm font-semibold">Storage breakdown</div>
-          <div className="text-xs text-slate-500 dark:text-slate-400">
+          <div className="text-xs text-slate-500 dark:text-giga-muted">
             Total {formatBytes(total === 1 ? 0 : total)}
           </div>
         </div>
-        <div className="text-2xl">📊</div>
+        <Icon name="bar_chart" size="lg" />
       </div>
 
-      <div className="flex h-3 rounded-full overflow-hidden bg-slate-200 dark:bg-slate-800 mb-4">
+      <div className="flex h-3 rounded-full overflow-hidden bg-slate-200 dark:bg-giga-panel mb-4">
         {items.map((it) => {
           const pct = (groups[it.key] / total) * 100;
           return (
@@ -48,10 +49,10 @@ export default function StorageChart({ byType = [] }) {
           <div key={it.key} className="flex items-center gap-2">
             <div className={`h-2.5 w-2.5 rounded-full ${it.color}`} />
             <div className="text-xs">
-              <span className="text-slate-500 dark:text-slate-400">
-                {it.emoji} {it.label}
+              <span className="text-slate-500 dark:text-giga-muted">
+                <Icon name={it.icon} className="mr-1 text-[1.1em]" /> {it.label}
               </span>
-              <div className="font-medium text-slate-900 dark:text-white">
+              <div className="font-medium text-slate-900 dark:text-giga-ink">
                 {formatBytes(groups[it.key])}
               </div>
             </div>

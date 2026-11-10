@@ -1,5 +1,6 @@
 import FileItem from './FileItem.jsx';
 import { Skeleton } from '../common/Loader.jsx';
+import Icon from '../common/Icon.jsx';
 
 export default function FileList({ files, loading, onStar, onDelete, onShare, onPreview, emptyText = 'No files yet.' }) {
   if (loading) {
@@ -14,8 +15,8 @@ export default function FileList({ files, loading, onStar, onDelete, onShare, on
   if (!files?.length) {
     return (
       <div className="card-static p-10 text-center">
-        <div className="text-4xl mb-3">📭</div>
-        <p className="text-slate-500 dark:text-slate-400">{emptyText}</p>
+        <div className="text-4xl mb-3"><Icon name="inbox" /></div>
+        <p className="text-slate-500 dark:text-giga-muted">{emptyText}</p>
       </div>
     );
   }

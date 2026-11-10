@@ -5,6 +5,7 @@ import Button from '../common/Button.jsx';
 import { api } from '../../api/index.js';
 import { useToast } from '../../hooks/useToast.jsx';
 import { EXPIRY_OPTIONS } from '../../utils/constants.js';
+import Icon from '../common/Icon.jsx';
 
 export default function ShareModal({ file, open, onClose }) {
   const [password, setPassword] = useState('');
@@ -77,20 +78,22 @@ export default function ShareModal({ file, open, onClose }) {
               Cancel
             </Button>
             <Button onClick={create} loading={loading}>
-              🔗 Create link
+              <Icon name="link" className="text-[1.1em]" /> Create link
             </Button>
           </div>
         </div>
       ) : (
         <div className="space-y-4">
-          <div className="p-3 rounded-xl bg-slate-100 dark:bg-slate-900/60 text-xs break-all font-mono">
+          <div className="p-3 rounded-xl bg-slate-100 dark:bg-giga-surface text-xs break-all font-mono">
             {shareUrl}
           </div>
           <div className="flex justify-end gap-2">
             <Button variant="ghost" onClick={close}>
               Done
             </Button>
-            <Button onClick={copy}>📋 Copy link</Button>
+            <Button onClick={copy}>
+              <Icon name="content_copy" className="text-[1.1em]" /> Copy link
+            </Button>
           </div>
         </div>
       )}

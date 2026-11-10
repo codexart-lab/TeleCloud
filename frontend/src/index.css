@@ -8,57 +8,86 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+  /* Giga display face for page-level headings */
+  h1,
+  h2 {
+    @apply font-display tracking-[-0.03em];
+  }
   body {
-    @apply bg-[#eef2f9] text-slate-900 dark:bg-[#060912] dark:text-slate-100 min-h-screen;
+    @apply bg-[#eef2f9] text-slate-900 dark:bg-giga-canvas dark:text-giga-ink min-h-screen;
   }
   * {
     -webkit-tap-highlight-color: transparent;
   }
 }
 
+/* Google Material Symbols — icon glyph base */
+.material-symbols-rounded {
+  font-family: 'Material Symbols Rounded';
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  font-feature-settings: 'liga';
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
 @layer components {
   .card {
     @apply rounded-2xl border border-slate-200/80 bg-white/80 backdrop-blur shadow-sm
-      dark:border-slate-800/80 dark:bg-slate-900/70
-      transition-all duration-300 hover:-translate-y-1 hover:border-blue-500/50 hover:shadow-lg;
+      dark:border-giga-border dark:bg-giga-surface
+      transition-all duration-300 hover:-translate-y-1 hover:border-giga-violet/40 hover:shadow-lg;
   }
   .card-static {
     @apply rounded-2xl border border-slate-200/80 bg-white/80 backdrop-blur shadow-sm
-      dark:border-slate-800/80 dark:bg-slate-900/70;
+      dark:border-giga-border dark:bg-giga-surface;
   }
   .btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-xl font-medium
+    @apply inline-flex items-center justify-center gap-2 rounded-full font-medium
       transition-all duration-200 focus:outline-none focus-visible:ring-2
-      focus-visible:ring-blue-500/70 disabled:opacity-50 disabled:cursor-not-allowed;
+      focus-visible:ring-giga-violet/70 focus-visible:ring-offset-2
+      focus-visible:ring-offset-white dark:focus-visible:ring-offset-black
+      disabled:opacity-50 disabled:cursor-not-allowed;
   }
   .btn-primary {
-    @apply btn bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg
-      hover:shadow-xl hover:scale-[1.02] active:scale-[0.98];
+    @apply btn bg-slate-900 text-white shadow-lg
+      hover:scale-[1.02] hover:shadow-xl active:scale-[0.98]
+      dark:bg-giga-action dark:text-giga-action-ink;
   }
   .btn-ghost {
-    @apply btn border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-200
-      hover:bg-slate-100 dark:hover:bg-slate-800;
+    @apply btn border border-slate-300 text-slate-700
+      hover:bg-slate-100
+      dark:border-giga-border dark:text-giga-soft dark:hover:bg-giga-panel;
   }
   .btn-danger {
     @apply btn bg-red-500 text-white hover:bg-red-600 shadow-lg;
   }
   .input {
     @apply w-full rounded-xl border border-slate-300 bg-white/90 px-4 py-2.5 text-slate-900
-      placeholder:text-slate-400 focus:border-blue-500 focus:outline-none focus:ring-2
-      focus:ring-blue-500/40 transition
-      dark:border-slate-700 dark:bg-slate-900/60 dark:text-slate-100 dark:placeholder:text-slate-500;
+      placeholder:text-slate-400 focus:border-giga-violet focus:outline-none focus:ring-2
+      focus:ring-giga-violet/30 transition
+      dark:border-giga-border dark:bg-giga-canvas/60 dark:text-giga-ink dark:placeholder:text-giga-faint;
   }
   .label {
-    @apply block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5;
+    @apply block font-label text-[0.6875rem] font-medium uppercase tracking-[0.14em]
+      text-slate-600 mb-2 dark:text-giga-faint;
   }
   .badge {
     @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium;
   }
   .link {
-    @apply text-blue-500 hover:text-blue-400 transition-colors;
+    @apply text-blue-600 hover:text-blue-500 transition-colors dark:text-giga-blue dark:hover:text-giga-lilac;
   }
   .gradient-text {
-    @apply bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-blue-600 to-violet-600 bg-clip-text text-transparent
+      dark:from-giga-rose dark:to-giga-lilac;
   }
   .shimmer {
     background: linear-gradient(
@@ -72,16 +101,52 @@
   }
 }
 
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
+/* Giga.ai marketing language — see DESIGN.md */
+@layer components {
+  .giga-pill {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-giga-action
+      font-medium text-giga-action-ink transition-transform duration-200
+      hover:scale-[1.02] active:scale-[0.99] focus:outline-none focus-visible:ring-2
+      focus-visible:ring-giga-violet focus-visible:ring-offset-2 focus-visible:ring-offset-black;
+  }
+  .giga-pill-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-giga-border
+      font-medium text-giga-soft transition-colors duration-200 hover:border-giga-soft/40
+      hover:text-giga-ink focus:outline-none focus-visible:ring-2 focus-visible:ring-giga-violet
+      focus-visible:ring-offset-2 focus-visible:ring-offset-black;
+  }
+  .giga-label {
+    @apply font-label text-[0.6875rem] font-medium uppercase tracking-[0.2em];
+  }
+  .giga-card {
+    @apply rounded-[2rem] border border-white/5 overflow-hidden;
+  }
+  .giga-orb {
+    background:
+      radial-gradient(circle at 34% 28%, #ffffff 0%, #ffdcf8 7%, #ff9aea 22%, #e89eee 40%, #8a5cff 64%, #2a0f4d 84%, #07070b 100%);
+    box-shadow:
+      0 0 80px 18px rgba(232, 158, 238, 0.3),
+      0 0 180px 60px rgba(102, 64, 255, 0.18),
+      inset -24px -32px 70px rgba(20, 0, 40, 0.75);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-breathe,
+  .animate-wave,
+  .animate-float {
+    animation: none !important;
+  }
 }
 
 /* Scrollbar */
 ::-webkit-scrollbar { width: 10px; height: 10px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb {
-  background: rgba(100, 116, 139, 0.35);
+  background: rgba(120, 120, 120, 0.3);
   border-radius: 8px;
 }
-::-webkit-scrollbar-thumb:hover { background: rgba(100, 116, 139, 0.55); }
+::-webkit-scrollbar-thumb:hover { background: rgba(150, 150, 150, 0.5); }

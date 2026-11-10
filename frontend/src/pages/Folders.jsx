@@ -5,6 +5,7 @@ import Input from '../components/common/Input.jsx';
 import Button from '../components/common/Button.jsx';
 import Modal from '../components/common/Modal.jsx';
 import Loader from '../components/common/Loader.jsx';
+import Icon from '../components/common/Icon.jsx';
 import { FOLDER_COLORS } from '../utils/constants.js';
 
 export default function Folders() {
@@ -67,18 +68,20 @@ export default function Folders() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl md:text-3xl font-bold">Folders</h1>
-          <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
+          <h1 className="font-display text-3xl md:text-4xl font-light tracking-[-0.02em]">Folders</h1>
+          <p className="text-sm text-slate-500 dark:text-giga-muted mt-1">
             Organize your files with colored folders.
           </p>
         </div>
-        <Button onClick={() => setOpen(true)}>📁 New folder</Button>
+        <Button onClick={() => setOpen(true)}>
+          <Icon name="create_new_folder" className="text-[1.1em]" /> New folder
+        </Button>
       </div>
 
       {!folders.length ? (
         <div className="card-static p-10 text-center">
-          <div className="text-4xl mb-3">🗂️</div>
-          <p className="text-slate-500 dark:text-slate-400">No folders yet.</p>
+          <div className="text-4xl mb-3"><Icon name="folder_open" /></div>
+          <p className="text-slate-500 dark:text-giga-muted">No folders yet.</p>
         </div>
       ) : (
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -88,10 +91,10 @@ export default function Folders() {
                 className="h-12 w-12 rounded-xl grid place-items-center text-2xl mb-3"
                 style={{ background: `${f.color}22`, color: f.color }}
               >
-                📁
+                <Icon name="folder" />
               </div>
               <div className="font-semibold text-sm truncate">{f.name}</div>
-              <div className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+              <div className="text-xs text-slate-500 dark:text-giga-muted mt-1">
                 {f.file_count} file{f.file_count === 1 ? '' : 's'}
               </div>
               <button
@@ -99,7 +102,7 @@ export default function Folders() {
                 className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 text-red-500 text-xs transition-opacity"
                 title="Delete folder"
               >
-                ✕
+                <Icon name="close" />
               </button>
             </div>
           ))}
@@ -128,7 +131,7 @@ export default function Folders() {
                   type="button"
                   onClick={() => setColor(c)}
                   className={`h-8 w-8 rounded-full transition-transform ${
-                    color === c ? 'ring-2 ring-offset-2 ring-blue-500 scale-110' : ''
+                    color === c ? 'ring-2 ring-offset-2 ring-giga-violet scale-110' : ''
                   }`}
                   style={{ background: c }}
                   aria-label={`Pick color ${c}`}

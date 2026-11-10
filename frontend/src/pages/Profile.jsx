@@ -5,6 +5,7 @@ import { useToast } from '../hooks/useToast.jsx';
 import { useTheme } from '../context/ThemeContext.jsx';
 import Input from '../components/common/Input.jsx';
 import Button from '../components/common/Button.jsx';
+import Icon from '../components/common/Icon.jsx';
 
 export default function Profile() {
   const { user, updateUser } = useAuth();
@@ -58,8 +59,8 @@ export default function Profile() {
   return (
     <div className="space-y-6 max-w-3xl">
       <div>
-        <h1 className="text-2xl md:text-3xl font-bold">Profile</h1>
-        <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
+        <h1 className="font-display text-3xl md:text-4xl font-light tracking-[-0.02em]">Profile</h1>
+        <p className="text-sm text-slate-500 dark:text-giga-muted mt-1">
           Manage your account, bot link and theme.
         </p>
       </div>
@@ -69,13 +70,13 @@ export default function Profile() {
           {form.avatar ? (
             <img src={form.avatar} alt="avatar" className="h-16 w-16 rounded-full object-cover" />
           ) : (
-            <div className="h-16 w-16 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 grid place-items-center text-2xl text-white font-bold">
+            <div className="h-16 w-16 rounded-full bg-giga-panel grid place-items-center text-2xl text-white font-bold">
               {user?.name?.[0]?.toUpperCase() || 'U'}
             </div>
           )}
           <div>
             <div className="font-semibold">{user?.name}</div>
-            <div className="text-sm text-slate-500 dark:text-slate-400">{user?.email}</div>
+            <div className="text-sm text-slate-500 dark:text-giga-muted">{user?.email}</div>
           </div>
         </div>
 
@@ -97,17 +98,17 @@ export default function Profile() {
 
       <div className="card-static p-6">
         <div className="font-semibold mb-3">Telegram Bot</div>
-        <div className="text-sm text-slate-500 dark:text-slate-400 mb-4">
-          Your username: <span className="font-mono text-slate-700 dark:text-slate-300">
+        <div className="text-sm text-slate-500 dark:text-giga-muted mb-4">
+          Your username: <span className="font-mono text-slate-700 dark:text-giga-soft">
             {user?.tg_username ? `@${user.tg_username}` : 'not set'}
           </span>
           <br />
-          Chat ID: <span className="font-mono text-slate-700 dark:text-slate-300">{user?.chat_id || 'not linked'}</span>
+          Chat ID: <span className="font-mono text-slate-700 dark:text-giga-soft">{user?.chat_id || 'not linked'}</span>
         </div>
         <Button variant="ghost" onClick={detect} loading={detecting}>
-          📡 Detect Chat ID
+          <Icon name="sensors" className="text-[1.1em]" /> Detect Chat ID
         </Button>
-        <p className="text-xs text-slate-500 dark:text-slate-400 mt-3">
+        <p className="text-xs text-slate-500 dark:text-giga-muted mt-3">
           Send <span className="font-mono">/start</span> to the bot on Telegram first, then click Detect.
         </p>
       </div>
@@ -119,22 +120,22 @@ export default function Profile() {
             onClick={() => changeTheme('dark')}
             className={`flex-1 rounded-xl border p-4 text-center transition ${
               theme === 'dark'
-                ? 'border-blue-500 bg-blue-500/10'
-                : 'border-slate-200 dark:border-slate-800'
+                ? 'border-giga-violet bg-giga-violet/10'
+                : 'border-slate-200 dark:border-giga-border'
             }`}
           >
-            <div className="text-2xl mb-1">🌙</div>
+            <div className="text-2xl mb-1"><Icon name="dark_mode" /></div>
             <div className="text-sm font-medium">Dark</div>
           </button>
           <button
             onClick={() => changeTheme('light')}
             className={`flex-1 rounded-xl border p-4 text-center transition ${
               theme === 'light'
-                ? 'border-blue-500 bg-blue-500/10'
-                : 'border-slate-200 dark:border-slate-800'
+                ? 'border-giga-violet bg-giga-violet/10'
+                : 'border-slate-200 dark:border-giga-border'
             }`}
           >
-            <div className="text-2xl mb-1">☀️</div>
+            <div className="text-2xl mb-1"><Icon name="light_mode" /></div>
             <div className="text-sm font-medium">Light</div>
           </button>
         </div>

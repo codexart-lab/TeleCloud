@@ -4,8 +4,8 @@
   "description": "AI-powered cloud storage on Telegram",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#060912",
-  "theme_color": "#060912",
+  "background_color": "#000000",
+  "theme_color": "#000000",
   "orientation": "portrait-primary",
   "icons": [
     {

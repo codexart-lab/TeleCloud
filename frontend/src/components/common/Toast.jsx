@@ -1,17 +1,18 @@
 import { useToast } from '../../hooks/useToast.jsx';
+import Icon from './Icon.jsx';
 
 const styles = {
   success: 'bg-emerald-500/95 text-white',
   error: 'bg-red-500/95 text-white',
-  info: 'bg-slate-800/95 text-white dark:bg-slate-700/95',
+  info: 'bg-slate-800/95 text-white dark:bg-giga-panel',
   warn: 'bg-amber-500/95 text-white',
 };
 
 const icons = {
-  success: '✅',
-  error: '⚠️',
-  info: 'ℹ️',
-  warn: '⚡',
+  success: 'check_circle',
+  error: 'error',
+  info: 'info',
+  warn: 'bolt',
 };
 
 export default function ToastHost() {
@@ -26,7 +27,7 @@ export default function ToastHost() {
             styles[t.type] || styles.info
           }`}
         >
-          <span>{icons[t.type] || icons.info}</span>
+          <Icon name={icons[t.type] || icons.info} />
           <span className="text-sm flex-1">{t.message}</span>
         </div>
       ))}

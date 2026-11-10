@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { api } from '../../api/index.js';
 import { useAuth } from '../../hooks/useAuth.js';
+import Icon from '../common/Icon.jsx';
 
 export default function BotStatus() {
   const { user } = useAuth();
@@ -18,7 +19,12 @@ export default function BotStatus() {
   return (
     <div className={`card-static p-5 border ${tone}`}>
       <div className="flex items-start gap-3">
-        <div className="text-3xl">{ready ? '🟢' : '🟡'}</div>
+        <Icon
+          name="circle"
+          filled
+          size="lg"
+          className={ready ? 'text-emerald-500' : 'text-amber-400'}
+        />
         <div className="flex-1">
           <div className="text-sm font-semibold">
             {ready ? 'Bot connected' : 'Setup required'}
