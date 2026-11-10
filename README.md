@@ -842,46 +842,6 @@ Built with:
 <p align="center">
   Made with ☁️ and ❤️ — <strong>TeleCloud</strong>
 </p>
-```
+
 
 ---
-
-## 🎯 क्या-क्या Cover किया इस README में
-
-| Section | Content |
-|---------|---------|
-| ✅ Overview | Project ka purpose |
-| ✅ Features | Har feature bullet points me |
-| ✅ Architecture | ASCII diagram |
-| ✅ Tech Stack | Table with reasons |
-| ✅ Project Structure | Full tree |
-| ✅ Quick Start | 8-step setup |
-| ✅ Environment Setup | wrangler.toml + JWT generate commands |
-| ✅ Database Schema | All 7 tables |
-| ✅ API Endpoints | 20+ endpoints |
-| ✅ Bot Setup | 3-step BotFather flow |
-| ✅ Deployment | Local + GitHub auto-deploy |
-| ✅ Admin Panel | How to promote + use |
-| ✅ Development | Scripts + local DB |
-| ✅ **Troubleshooting** | **9 common errors + fixes** (जो हमने experience किए!) |
-| ✅ Security | PBKDF2, JWT, cookies details |
-| ✅ FAQ | 8 common questions |
-| ✅ License | MIT |
-| ✅ Credits | Libraries list |
-
----
-
-## 🚀 अब ये करें
-
-1. Root folder में `README.md` खोलें
-2. **Ctrl+A → Delete** (पुराना content हटाओ)
-3. ऊपर वाला पूरा content **paste** करो
-4. **`YOUR-USERNAME`** को अपने GitHub username से replace करो (2-3 जगह हैं)
-5. Save करो
-6. Push करो:
-
-```bash
-git add README.md
-git commit -m "docs: add comprehensive README"
-git push origin main
-```
